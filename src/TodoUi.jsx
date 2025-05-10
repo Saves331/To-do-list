@@ -1,11 +1,12 @@
-import { useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import TodoItem from './components/TodoItem'
+
 
 const TodoUi = () => {
 
     const [todos, setTodos] = useState([]);
     const [input, setInput] = useState('');
-
+    const isInitialLoad = useRef(true);
     
     const handleAddTodo = () => {
         if(input.trim() !== '') {
@@ -24,7 +25,26 @@ const TodoUi = () => {
         setTodos(filtered)
     }
 
+    useEffect(() => {
+        const storedTodos = localStorage.getItem('todos');
+        console.log('Loaded from localStorage:', storedTodos);
+        if (storedTodos) {
+            setTodos(JSON.parse(storedTodos))
+        }
+    }, [])
 
+
+ useEffect(() => {
+
+    if (isInitialLoad.current) {
+        isInitialLoad.current = false;
+        return;
+    }
+        localStorage.setItem('todos', JSON.stringify(todos));
+        console.log('Saved to localStorage:', todos);
+    }, [todos])
+
+   
 
   return (
     <div style={{ padding: '2rem', maxWidth: '600px', margin: 'auto' }}>
