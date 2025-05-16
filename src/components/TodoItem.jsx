@@ -1,4 +1,5 @@
-function TodoItem({todo, onToggle, onDelete}) {
+function TodoItem(props) {
+    const{todo, onToggle, onDelete} = props;
   return (
     <li style={{marginBottom: '1rem'}}>
         <span

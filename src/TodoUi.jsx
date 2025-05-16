@@ -13,6 +13,8 @@ const TodoUi = () => {
             setTodos([...todos, {text: input, completed: false}]);
             setInput('')
         }
+
+        
     };
 
     const toggleComplete = (index) => {
@@ -53,6 +55,11 @@ const TodoUi = () => {
   <input
     type="text"
     placeholder="Add a new task..."
+    onKeyDown={(e) => {
+      if (e.key === "Enter") {
+        handleAddTodo();
+      }
+    }}
     value={input}
     onChange={(e) => setInput(e.target.value)}
   />
