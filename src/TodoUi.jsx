@@ -9,9 +9,20 @@ const TodoUi = () => {
     const isInitialLoad = useRef(true);
     
     const handleAddTodo = () => {
-        if(input.trim() !== '') {
-            setTodos([...todos, {text: input, completed: false}]);
+      const trimmedInput = input.trim();
+
+        if(trimmedInput !== '') {
+          const alreadyAdded = todos.some(
+            (task) => task.text.toLowerCase() === trimmedInput.toLowerCase()
+          );
+
+          if(alreadyAdded) {
+            alert ("Already added item!")
             setInput('')
+          } else {
+            setTodos([...todos, {text: input, completed: false}])
+            setInput('');
+          }
         }
 
         
@@ -26,6 +37,11 @@ const TodoUi = () => {
         const filtered = todos.filter((_, i) => i !== index);
         setTodos(filtered)
     }
+
+    const clearTodos = () => {
+      setTodos([]);
+    }
+
 
     useEffect(() => {
         const storedTodos = localStorage.getItem('todos');
@@ -64,6 +80,7 @@ const TodoUi = () => {
     onChange={(e) => setInput(e.target.value)}
   />
   <button onClick={handleAddTodo}>Add</button>
+  <button onClick={clearTodos}>Clear Tasks</button>
 
   <ul>
     {todos.map((todo, index) => (
