@@ -82,7 +82,7 @@ const TodoUi = () => {
   <button onClick={handleAddTodo}>Add</button>
   <button onClick={clearTodos}>Clear Tasks</button>
 
-  <ul>
+  <ul >
     {todos.map((todo, index) => (
       <TodoItem
         key={index}
