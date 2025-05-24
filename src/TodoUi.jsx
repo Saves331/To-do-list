@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import TodoItem from './components/TodoItem';
-
+import ManageTask from './components/ManageTask'
 
 
 const TodoUi = () => {
@@ -69,30 +69,20 @@ const TodoUi = () => {
     <div className='main' style={{ 
         padding: '2rem', 
         margin: 'auto', 
-        transform: 'scale(2)',
-}}>
+        zoom: '2',
+    }}>
   <h1>To-Do List</h1>
 
 
 <div className='task-list'>
 
-  <div className='inputs'>
-    <input
-    className='input-task-add'
-    type="text"
-    placeholder="Add a new task..."
-    onKeyDown={(e) => {
-      if (e.key === "Enter") {
-        handleAddTodo();
-      }
-    }}
-    value={input}
-    onChange={(e) => setInput(e.target.value)}
-  />
-  <button className='input-btn' onClick={handleAddTodo}>Add</button>
-  <button className='input-btn'onClick={clearTodos}>Clear Tasks</button>
+    <ManageTask 
+  input={input}
+  setInput={setInput}
+  handleAddTodo={handleAddTodo}
+  clearTodos={clearTodos}
+/>
 
-  </div>
    <hr />
    <h4>Tasks</h4>
    
