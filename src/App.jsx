@@ -1,5 +1,5 @@
-import './App.css'
-import './UI.css'
+import './style/App.css'
+import './style/UI.css'
 import TodoUI from './TodoUi';
 
 
