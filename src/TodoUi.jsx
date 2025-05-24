@@ -65,10 +65,15 @@ const TodoUi = () => {
    
 
   return (
-    <div style={{ padding: '2rem', maxWidth: '600px', margin: 'auto' }}>
+    <div className='main' style={{ padding: '2rem', margin: 'auto'}}>
   <h1>To-Do List</h1>
 
-  <input
+
+<div className='task-list'>
+
+  <div className='inputs'>
+    <input
+    className='input-task-add'
     type="text"
     placeholder="Add a new task..."
     onKeyDown={(e) => {
@@ -79,10 +84,15 @@ const TodoUi = () => {
     value={input}
     onChange={(e) => setInput(e.target.value)}
   />
-  <button onClick={handleAddTodo}>Add</button>
-  <button onClick={clearTodos}>Clear Tasks</button>
+  <button className='input-btn' onClick={handleAddTodo}>Add</button>
+  <button className='input-btn'onClick={clearTodos}>Clear Tasks</button>
 
-  <ul >
+  </div>
+   <hr />
+   <h4>Tasks</h4>
+   
+
+  <ul className='task-wrapper'>
     {todos.map((todo, index) => (
       <TodoItem
         key={index}
@@ -92,6 +102,8 @@ const TodoUi = () => {
       />
     ))}
   </ul>
+</div>
+
 </div>
 
   )
