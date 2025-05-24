@@ -1,5 +1,6 @@
-import { useEffect, useState, useRef } from 'react'
-import TodoItem from './components/TodoItem'
+import { useEffect, useState, useRef } from 'react';
+import TodoItem from './components/TodoItem';
+
 
 
 const TodoUi = () => {
@@ -65,7 +66,11 @@ const TodoUi = () => {
    
 
   return (
-    <div className='main' style={{ padding: '2rem', margin: 'auto'}}>
+    <div className='main' style={{ 
+        padding: '2rem', 
+        margin: 'auto', 
+        transform: 'scale(2)',
+}}>
   <h1>To-Do List</h1>
 
 
