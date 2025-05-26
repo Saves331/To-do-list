@@ -1,8 +1,18 @@
-import { FaTrash } from 'react-icons/fa';
-import { FaEdit } from 'react-icons/fa';
+import { useState } from 'react';
+import { FaEdit, FaTrash } from 'react-icons/fa';
 
 function TodoItem(props) {
-    const{todo, onToggle, onDelete} = props;
+    const{todo, onToggle, onDelete, onUpdate} = props;
+    const [isEditing, setIsEditing] = useState(false);
+    const [editText, setEditText] = useState(todo.text);
+    const handleEdit = () => setIsEditing(true);
+
+    const handleKeyPress = (e) => {
+        if(e.key === 'Enter') {
+            onUpdate(editText);
+            setIsEditing(false);
+        }
+    }
   return (
     <li style={{marginBottom: '1rem', 
                 maxWidth: '', 
@@ -31,7 +41,7 @@ function TodoItem(props) {
                  style={{cursor: 'pointer', color: 'red', marginLeft: '0.5rem', fontSize:'1rem'}}
                  title='Delete'></FaTrash>
 
-            <FaEdit style={{cursor: 'pointer', color: 'white', marginLeft: '0.2rem'}}></FaEdit>
+            <FaEdit onClick={() => setIsEditing(true)} style={{cursor: 'pointer', color: 'white', marginLeft: '0.2rem'}}></FaEdit>
 
         </div>
             </li>

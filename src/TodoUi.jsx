@@ -7,6 +7,7 @@ const TodoUi = () => {
 
     const [todos, setTodos] = useState([]);
     const [input, setInput] = useState('');
+  
     const isInitialLoad = useRef(true);
     
     const handleAddTodo = () => {
@@ -43,6 +44,12 @@ const TodoUi = () => {
       setTodos([]);
     }
 
+    const handleUpdateTodo = (index, newText) => {
+      const updated = todos.map((todo, i) => {
+        i === index ? {...todo, text: newText} : todo
+      });
+      setTodos(updated);
+    }
 
     useEffect(() => {
         const storedTodos = localStorage.getItem('todos');
@@ -69,7 +76,7 @@ const TodoUi = () => {
     <div className='main' style={{ 
         padding: '2rem', 
         margin: 'auto', 
-        zoom: '2',
+        zoom: '1',
     }}>
   <h1>To-Do List</h1>
 
@@ -92,6 +99,7 @@ const TodoUi = () => {
       <TodoItem
         key={index}
         todo={todo}
+        onUpdate={(newText) => handleUpdateTodo(index, newText)}
         onToggle={() => toggleComplete(index)}
         onDelete={() => deleteTodo(index)}
       />
