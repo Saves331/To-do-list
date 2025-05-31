@@ -45,9 +45,9 @@ const TodoUi = () => {
     }
 
     const handleUpdateTodo = (index, newText) => {
-      const updated = todos.map((todo, i) => {
+      const updated = todos.map((todo, i) => 
         i === index ? {...todo, text: newText} : todo
-      });
+      );
       setTodos(updated);
     }
 
