@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 
-function TodoItem({ todo, onToggle, onDelete, onUpdate }) {
+function TodoItem(props) {
+  const { todo, onToggle, onDelete, onUpdate } = props;
   const [isEditing, setIsEditing] = useState(false);
   const [editText, setEditText] = useState(todo.text);
 
@@ -55,13 +56,14 @@ function TodoItem({ todo, onToggle, onDelete, onUpdate }) {
             maxWidth: '80%',
             wordWrap: 'break-word',
             whiteSpace: 'pre-wrap',
+            fontSize: '1.2rem'
           }}
         >
           {todo.text}
         </span>
       )}
 
-      <div>
+      <div className='icons'>
         <FaEdit
           onClick={() => setIsEditing(true)}
           style={{
