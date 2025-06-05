@@ -5,8 +5,8 @@ import ToDoList from './components/ToDoList';
 const TodoUi = () => {
 
     const [toDoLists, setToDoLists] = useState([
-      {id: 1, todos: [], input: ''}, 
-      {id: 2, todos: [], input: ''}, 
+      {id: 1, todos: [], input: '', headline: 'List 1'}, 
+      {id: 2, todos: [], input: '', headline: 'List 2'}, 
     ])
    
     const isInitialLoad = useRef(true);
@@ -55,8 +55,10 @@ const TodoUi = () => {
   <h1 style={{fontSize: '4rem'}}>To-Do List</h1>
 
 
-    {toDoLists.map(({id, todos, input}) => (
+    <div className='todoList-wrapper'>
+{toDoLists.map(({id, todos, input, headline}) => (
       <ToDoList
+      headline = {headline}
       key = {id}
       listId = {id}
       todos = {todos}
@@ -64,7 +66,10 @@ const TodoUi = () => {
       updateInput = {updateInput}
       updateTodos = {updateTodos}
       ></ToDoList>
-    ))}
+         ))}
+    </div>
+    
+ 
 
 
 

@@ -20,6 +20,7 @@ body {
     background-color: #1E1E1E;
     padding: 1rem;
     width: 400px;
+    margin: 0.5rem;
 }
 
 
@@ -54,5 +55,11 @@ body {
 
 .icons {
     font-size: 1.2rem;
+}
+
+.todoList-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 2;
 }
 

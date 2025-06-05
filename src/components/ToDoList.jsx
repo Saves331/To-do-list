@@ -3,7 +3,7 @@ import ManageTask from './ManageTask'
 
 
 function ToDoList(props) {
-  const { listId, todos, input, updateTodos, updateInput} = props
+  const { listId, todos, input, updateTodos, updateInput, headline} = props
   
      const handleAddTodo = () => {
       const trimmedInput = input.trim();
@@ -47,6 +47,8 @@ function ToDoList(props) {
   
   return (
     <div className='task-list'>
+
+      <h2>{headline}</h2>
 
     <ManageTask 
   input={input}
